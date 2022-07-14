@@ -1,0 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 0.4rem;
+}
+.common-container {
+    flex-direction: column;
+    height: calc(100vh - 2.2rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
