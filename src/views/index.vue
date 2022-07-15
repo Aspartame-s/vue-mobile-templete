@@ -14,7 +14,7 @@
           <span class="private">私餐数量：{{ getPrivateNum }}</span>
         </div>
         <div class="btn-box">
-          <van-button type="primary">下单</van-button>
+          <van-button type="primary" @click="go">下单</van-button>
         </div>
       </van-tab>
       <van-tab title="公餐">
@@ -40,7 +40,7 @@
           placeholder="请输入留言"
         />
         <div class="btn-box">
-          <van-button type="primary">下单</van-button>
+          <van-button type="primary" @click="go">下单</van-button>
         </div>
       </van-tab>
     </van-tabs>
@@ -106,7 +106,7 @@ export default {
             "伊莉丝、伊芙琳、费德提克、爱妮维雅、锐雯、赵信、泰达米尔",
           url: "",
           num: 0,
-        },
+        }
       ],
       message: "",
     };
@@ -129,8 +129,16 @@ export default {
   },
   watch: {},
 
-  methods: {},
-  created() {},
+  methods: {
+      go() {
+          this.$router.push('/orderDetail')
+      }
+  },
+  created() {
+      console.log(this.$router)
+      this.$store.commit('changeTitle', this.$route.meta.translate)
+    //   console.log(this.$route)
+  },
   mounted() {},
 };
 </script>
@@ -163,14 +171,16 @@ export default {
 }
 .btn-box {
   @include center;
-  margin-bottom: 0.3rem;
-  margin-top: 0.3rem;
+//   margin-bottom: 0.3rem;
+//   margin-top: 0.3rem;
+//   padding: .3rem 0;
   /deep/ .van-button {
     height: 0.6rem;
   }
 }
 /deep/ .van-cell {
   line-height: normal;
+      margin: .3rem 0;
   .van-field__control {
     height: auto !important;
   }

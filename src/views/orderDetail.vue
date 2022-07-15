@@ -1,5 +1,7 @@
 <template>
-    <div>其他商品</div>
+<div>
+    订单详情
+</div>
 </template>
 
 <script>
@@ -17,8 +19,7 @@ methods: {
 
 },
 created() {
-    // console.log(this.$)
-    console.log(window.history.length)
+    this.$store.commit('changeTitle', '订单详情')
 },
 mounted() {
 
