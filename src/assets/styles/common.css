@@ -2,12 +2,54 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size: 0.4rem;
+    font-size: 0.3rem;
 }
 .common-container {
     flex-direction: column;
-    height: calc(100vh - 2.2rem);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    height: auto;
+    padding-bottom: 1.2rem;
+}
+.van-card {
+    height: 2.5rem;
+}
+.van-card__thumb {
+    width: 1.5rem!important;
+    height: 1.5rem!important;
+}
+.van-card__content {
+    height: auto;
+}
+.van-card__title {
+    /* min-height: .5rem!important; */
+    max-height: none!important;
+    padding: .2rem 0;
+}
+.van-card__desc {
+    /* height: .7rem!important; */
+    /* min-height: .5rem!important; */
+    max-height: none!important;
+    /* padding: .2rem; */
+    font-size: .3rem;
+    line-height: normal!important;
+}
+.van-ellipsis {
+    white-space: normal!important;
+}
+.van-card__bottom {
+    padding: .2rem;
+}
+.van-card__footer {
+    padding: .1rem;
+}
+.van-stepper__minus {
+    height: .5rem;
+}
+.van-stepper__minus, .van-stepper__plus {
+    width: .5rem!important;
+    height: .5rem!important;
+}
+.van-stepper__input {
+    width: .4rem!important;
+    height: .4rem!important;
+    font-size: .3rem!important;
 }
