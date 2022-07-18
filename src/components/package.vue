@@ -6,7 +6,7 @@
     thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
   >
   <template #footer>
-    <van-stepper v-model.number="item.num" integer min="" @plus="plus(item)" @minus="minus(item)" @change="change($event, item)" />
+    <van-stepper v-model.number="item.num" integer min=""  @change="change($event, item)" />
   </template>
   </van-card>
 </template>
@@ -17,25 +17,23 @@ export default {
   components: {},
   data() {
     return {
-        value: 0,
+        // value: 0,
     };
   },
   props: {
       item: Object
   },
   computed: {
-      getTotalPrivate() {
-          return 
-      }
+     
   },
   watch: {},
   methods: {
-      plus(item) {
-          item.num = item.num + 1
-      },
-      minus(item) {
-        item.num = item.num - 1
-      },
+      // plus(item) {
+      //     item.num = item.num + 1
+      // },
+      // minus(item) {
+      //   item.num = item.num - 1
+      // },
       change(e, item) {
           item.num = e
       }

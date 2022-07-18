@@ -54,3 +54,9 @@
     height: .4rem!important;
     font-size: .3rem!important;
 }
+.button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

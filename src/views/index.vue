@@ -1,6 +1,6 @@
 <template>
   <div class="common-container">
-    <van-tabs v-model="active">
+    <van-tabs v-model="active" @click="tabChange">
       <van-tab title="私餐">
         <div
           v-for="(item, index) in packageList"
@@ -26,7 +26,7 @@
           <package-templete :item="item"></package-templete>
         </div>
         <div class="package-count">
-          <span class="public">公餐数量：{{getPublicNum}}</span>
+          <span class="public">公餐数量：{{ getPublicNum }}</span>
         </div>
         <div class="btn-box">
           <van-button type="info">公餐审批</van-button>
@@ -106,9 +106,10 @@ export default {
             "伊莉丝、伊芙琳、费德提克、爱妮维雅、锐雯、赵信、泰达米尔",
           url: "",
           num: 0,
-        }
+        },
       ],
       message: "",
+      activeTabTitle: "私餐",
     };
   },
   computed: {
@@ -130,13 +131,34 @@ export default {
   watch: {},
 
   methods: {
-      go() {
-          this.$router.push('/orderDetail')
+    go() {
+      let pList = [];
+      let total = null
+      if (this.activeTabTitle == "私餐") {
+        this.packageList.forEach((item) => {
+          pList.push(item);
+        });
+      } else {
+        this.publicList.forEach((item) => {
+          pList.push(item);
+        });
       }
+      this.$router.push({
+        path: "/orderDetail",
+        query: {
+          list: pList,
+          type: this.activeTabTitle
+        },
+      });
+    },
+    tabChange(name, title) {
+      // console.log(title)
+      this.activeTabTitle = title;
+    },
   },
   created() {
-      console.log(this.$router)
-      this.$store.commit('changeTitle', this.$route.meta.translate)
+    // console.log(this.$router)
+    this.$store.commit("changeTitle", this.$route.meta.translate);
     //   console.log(this.$route)
   },
   mounted() {},
@@ -171,16 +193,16 @@ export default {
 }
 .btn-box {
   @include center;
-//   margin-bottom: 0.3rem;
-//   margin-top: 0.3rem;
-//   padding: .3rem 0;
+  //   margin-bottom: 0.3rem;
+  //   margin-top: 0.3rem;
+  //   padding: .3rem 0;
   /deep/ .van-button {
     height: 0.6rem;
   }
 }
 /deep/ .van-cell {
   line-height: normal;
-      margin: .3rem 0;
+  margin: 0.3rem 0;
   .van-field__control {
     height: auto !important;
   }
